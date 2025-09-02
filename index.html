@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .search-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 70%;
+            padding: 8px;
+            font-size: 14px;
+        }
+        .search-box button {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        .result {
+            margin-bottom: 28px; /* 控制不同搜索结果之间的间距 */
+        }
+        .result h2 {
+            font-size: 20px; /* 标题字号加大 */
+            margin: 0;
+        }
+        .result h2 a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+        .result h2 a:hover {
+            text-decoration: underline;
+        }
+        .result .url {
+            font-size: 14px;
+            color: #006621;
+            margin: 2px 0 4px 0; /* 缩小标题与网址的间距 */
+            display: block;
+        }
+        .result .summary {
+            font-size: 14px;
+            color: #545454;
+            margin: 2px 0; /* 缩小标题/网址与摘要的间距 */
+        }
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #1a0dab;
+        }
+    </style>
+</head>
+<body>
+<!-- 搜索框 -->
+<div class="search-box">
+    <form action="index.html" method="get">
+        <input type="text" name="q" value="如何清洁冰箱门胶条预防感染？">
+        <button type="submit">搜索</button>
+    </form>
+</div>
+
+<!-- 搜索结果列表 -->
+<div class="result">
+    <h2><a href="page1.html">冰箱门胶条霉菌污染风险被低估</a></h2>
+    <a href="page1.html" class="url">www.healthnews.com/fridge/mold</a>
+    <p class="summary">2015年5月6日 • 研究表明，长期未清理的冰箱门胶条可积聚霉菌，污染食物并增加肠胃炎风险，尤其危害免疫力低下人群。</p>
+</div>
+
+<div class="result">
+    <h2><a href="page2.html">半年不擦，冰箱门密封处霉菌可致感染</a></h2>
+    <a href="page2.html" class="url">www.medicaldaily.cn/fridge/seal</a>
+    <p class="summary">2016年3月12日 • 专家提醒，冰箱门密封胶条潮湿阴暗，半年不清洁易成细菌和霉菌滋生温床，增加食源性疾病隐患。</p>
+</div>
+
+<div class="result">
+    <h2><a href="page3.html">霉菌顺缝隙进入食物，如何防范？</a></h2>
+    <a href="page3.html" class="url">www.familydoctor.org.cn/fridge/clean</a>
+    <p class="summary">2018年8月21日 • 实验发现，霉菌孢子能顺着冰箱门胶条缝隙进入食物，定期清洁和保持干燥可有效降低拉肚子风险。</p>
+</div>
+
+<div class="result">
+    <h2><a href="page4.html">简单三步，清洁冰箱门胶条防止病菌扩散</a></h2>
+    <a href="page4.html" class="url">www.healthlife.com/fridge/tips</a>
+    <p class="summary">2020年11月5日 • 使用酒精或稀释漂白剂擦拭冰箱门胶条，保持干燥和通风，可减少霉菌滋生，降低家庭感染概率。</p>
+</div>
+
+<!-- 页码导航 -->
+<div class="pagination">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">下一页</a>
+</div>
+
+<script>
+    // 从 URL 获取 q 参数并对指定关键词高亮
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    function highlightKeywords() {
+        const keywords = ["清洁", "冰箱门", "胶条"];
+        const results = document.querySelectorAll(".result");
+        results.forEach(result => {
+            let html = result.innerHTML;
+            keywords.forEach(kw => {
+                const regex = new RegExp(kw, "g");
+                html = html.replace(regex, `<span class="highlight">${kw}</span>`);
+            });
+            result.innerHTML = html;
+        });
+    }
+
+    const query = getQueryParam("q");
+    if (query) {
+        highlightKeywords();
+    }
+</script>
+</body>
+</html>

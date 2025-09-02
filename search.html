@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>搜索</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .search-container {
+      text-align: center;
+    }
+    .search-box {
+      width: 500px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      outline: none;
+    }
+    .search-button {
+      margin-left: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 24px;
+      background-color: #4285f4;
+      color: white;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: #357ae8;
+    }
+  </style>
+</head>
+<body>
+<div class="search-container">
+  <form action="index.html" method="get">
+    <input type="text" class="search-box" name="q" placeholder="请输入搜索内容">
+    <button type="submit" class="search-button">搜索</button>
+  </form>
+</div>
+</body>
+</html>
